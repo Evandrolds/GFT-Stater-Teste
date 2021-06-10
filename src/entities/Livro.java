@@ -1,62 +1,63 @@
 package entities;
 
-public class Livro extends Produto implements Imposto {
-	public Livro(String nome, double preco, int quantidade, String autor, String tema, int quantPag) {
-		super(nome, preco, quantidade);
-		this.autor = autor;
-		this.tema = tema;
-		this.quantPag = quantPag;
-	}
+public class Livro extends Produto {
 
-	private String autor;
-	private String tema;
-	private int quantPag;
+    public Livro(String nome, double preco, int quantidade, String autor, String tema, int quantPag) {
+        super(nome, preco, quantidade);
+        this.autor = autor;
+        this.tema = tema;
+        this.quantPag = quantPag;
+    }
 
-	public String getAutor() {
-		return autor;
-	}
+    private String autor;
+    private String tema;
+    private int quantPag;
 
-	public void setAutor(String autor) {
-		this.autor = autor;
-	}
+    public String getAutor() {
+        return autor;
+    }
 
-	public String getTema() {
-		return tema;
-	}
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
 
-	public void setTema(String tema) {
-		this.tema = tema;
-	}
+    public String getTema() {
+        return tema;
+    }
 
-	public int getQuantPag() {
-		return quantPag;
-	}
+    public void setTema(String tema) {
+        this.tema = tema;
+    }
 
-	public void setQuantPag(int quantPag) {
-		this.quantPag = quantPag;
-	}
+    public int getQuantPag() {
+        return quantPag;
+    }
 
-	public Livro() {
+    public void setQuantPag(int quantPag) {
+        this.quantPag = quantPag;
+    }
 
-	}
+    public Livro() {
 
-	@Override
-	public double calcularImposto() {
+    }
 
-		if (this.tema.equalsIgnoreCase("educativo")) {
-			return 0;
-		}
-		return getPreco() * 0.10;
-	}
+   
+    public double calcularImpostoLivros() {
 
-	@Override
-	public String toString() {
-		return "Livro [ Título: " + getNome() 
-		   + ", Preco: R$ " + String.format("%.2f", getPreco()) 
-		   + ", Quantidade: "+ getQuantidade() 
-		   + ", Autor: " + autor 
-		   + ", Tema: " + tema 
-		   + ", QuantPag: " + quantPag + "]";
-	}
+        if (this.tema.equalsIgnoreCase("educativo")) {
+            return getPreco();
+        }
+        return getPreco() * 0.10;
+    }
+
+    @Override
+    public String toString() {
+        return "Livro [ Titulo: " + getNome()
+                + ", Preco: R$ " + String.format("%.2f", getPreco())
+                + ", Quantidade: " + getQuantidade()
+                + ", Autor: " + autor
+                + ", Tema: " + tema
+                + ", QuantPag: " + quantPag + "]";
+    }
 
 }
